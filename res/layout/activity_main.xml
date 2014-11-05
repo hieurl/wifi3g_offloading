@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDualMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:onClick="onDualModeClick"
+        android:text="Enable dual mode" />
+
+    <TextView
+        android:id="@+id/txtChooseFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/checkBoxDualMode"
+        android:text="Download list" />
+
+    <EditText
+        android:id="@+id/etDownloadList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBoxDualMode"
+        android:layout_below="@+id/txtChooseFile"
+        android:inputType="text" 
+        android:singleLine="true"
+        android:text="url.txt">
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/txtSeekbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/checkBoxDualMode"
+        android:layout_below="@id/etDownloadList"
+        android:text="Threshold: " />
+
+    <TextView
+        android:id="@+id/txtThresholdValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etDownloadList"
+        android:layout_toRightOf="@id/txtSeekbar"
+        android:text="0Mb" />
+
+    <SeekBar
+        android:id="@+id/seekBarThreshold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txtSeekbar" />
+
+    <TextView
+        android:id="@+id/txtDownloadMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/checkBoxDualMode"
+        android:layout_below="@id/seekBarThreshold"
+        android:text="Download mode" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupDownloadMode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDownloadMode"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/radioSequential"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:onClick="onRadioButtonClicked"
+            android:text="Sequential" />
+
+        <RadioButton
+            android:id="@+id/radioParallels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Parallels" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txtModParallel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/txtDownloadMode"
+        android:layout_below="@id/radioGroupDownloadMode"
+        android:text="Max parallels download: " />
+
+    <TextView
+        android:id="@+id/txtNumberOfParalels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radioGroupDownloadMode"
+        android:layout_toRightOf="@id/txtModParallel"
+        android:text="1" />
+
+    <SeekBar
+        android:id="@+id/seekBarMaxParallels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/txtModParallel"
+        android:clickable="false" />
+
+    <Button
+        android:id="@+id/btDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/checkBoxDualMode"
+        android:layout_below="@id/seekBarMaxParallels"
+        android:onClick="onStartDownload"
+        android:text="Start Download" />
+
+</RelativeLayout>
